@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+
+const publishableKey = 'pk_test_b3B0aW1hbC1lZ3JldC0xNS5jbGVyay5hY2NvdW50cy5kZXYk';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider publishableKey={publishableKey}>
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
+    </ClerkProvider>
   );
 }
